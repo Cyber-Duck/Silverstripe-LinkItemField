@@ -70,10 +70,14 @@ class LinkItemField extends FormField
                     ->addExtraClass('link-hidden link-email'),
                 TextField::create('Telephone', 'Telephone (without +)')
                     ->addExtraClass('link-hidden link-telephone'),
-                Helpers::upload('File', 'File', 'Uploads', 'document')
-                    ->addExtraClass('link-hidden link-file'),
-                Helpers::upload('Image', 'Image', 'Uploads')
+                UploadField::create('File', 'File')
+                    ->addExtraClass('link-hidden link-file')
+                    ->setFolderName('Uploads')
+                    ->setAllowedFileCategories('document'),
+                UploadField::create('Image', 'Image')
                     ->addExtraClass('link-hidden link-image')
+                    ->setFolderName('Uploads')
+                    ->setAllowedFileCategories('image/supported')
             )->addExtraClass('link-items'),
             DropdownField::create('Target', 'Open in:')
                 ->setEmptyString('- select type -')
