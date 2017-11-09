@@ -119,7 +119,7 @@ class LinkItemField extends FormField
         if(count($properties)) {
             $context = $context->customise($properties);
         }
-        $result = $context->renderWith(self::class);
+        $result = $context->renderWith('forms/LinkItemField');
 
         return $result;
     }
