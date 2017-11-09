@@ -79,7 +79,7 @@ class LinkItemField extends FormField
                 ->setEmptyString('- select type -')
                 ->setSource($obj->getTargets())
         ]);
-        $fields->push(HiddenField::create('Name')->setValue($this->getRequest()->postVar('Name')));
+        $fields->push(HiddenField::create('Relation')->setValue($this->getRequest()->postVar('Name')));
         if($obj->ID > 0) {
             $fields->push(HiddenField::create('ID'));
         }
@@ -108,7 +108,7 @@ class LinkItemField extends FormField
         Controller::curr()->getResponse()->addHeader('Content-Type', 'application/json');
         return Convert::raw2json([
             'success' => true,
-            'name'    => $this->getRequest()->postVar('Name'),
+            'name'    => $this->getRequest()->postVar('Relation'),
             'id'      => $obj->ID,
             'url'     => $obj->Link()
         ]);
