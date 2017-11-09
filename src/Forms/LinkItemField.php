@@ -89,7 +89,7 @@ class LinkItemField extends FormField
         $validator = $obj->getCMSValidator();
 
         $form = Form::create($this, 'LinkItemForm', $fields, $actions, $validator);
-        $form->setTemplate('Forms/'.self::class.'_holder');
+        $form->setTemplate('forms/LinkItemField_holder');
         $form->addExtraClass('link-item-form');
         $form->debug();
         if($obj->ID > 0) {
