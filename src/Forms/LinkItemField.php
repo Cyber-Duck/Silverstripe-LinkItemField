@@ -40,7 +40,7 @@ class LinkItemField extends FormField
 
     public function getLinkPath()
     {
-        if($this->Value() > 0) return DataObject::get_by_id('LinkItem', $this->Value())->Link();
+        if($this->Value() > 0) return DataObject::get_by_id(LinkItem::class, $this->Value())->Link();
     }
     
     public function LinkItemFormHTML()
@@ -128,6 +128,6 @@ class LinkItemField extends FormField
     
     private function getLinkObject($id)
     {
-        return $id > 0 ? DataObject::get_by_id('LinkItem', $id) : LinkItem::create();
+        return $id > 0 ? DataObject::get_by_id(LinkItem::class, $id) : LinkItem::create();
     }
 }
