@@ -1,0 +1,41 @@
+{
+    "name": "cyber-duck/silverstripe-linkitemfield",
+    "description": "SilverStripe 4 custom form element for anchor, email, telephone, file, image, internal and external links",
+    "type": "silverstripe-vendormodule",
+    "homepage": "http://github.com/cyber-duck/silverstripe-linkitemfield",
+    "keywords": [
+        "silverstripe",
+        "silverstripe 4",
+        "linking",
+        "custom link field"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Mc Cormack",
+            "email": "andrewm@cyber-duck.co.uk",
+            "homepage": "https://github.com/Andrew-Mc-Cormack"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/cyber-duck/silverstripe-linkitemfield/issues"
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CyberDuck\\LinkItemField\\": "src/",
+            "CyberDuck\\LinkItemField\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "installer-name": "linkitemfield",
+        "expose": [
+            "assets/css",
+            "assets/js"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
