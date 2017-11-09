@@ -2,6 +2,8 @@
 
 namespace CyberDuck\LinkItemField\Forms;
 
+use CyberDuck\LinkItemField\Model\LinkItem;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
