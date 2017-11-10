@@ -21,7 +21,7 @@ Provides a Link object with the following options:
 
 ## Screen Shots
 
-- [Link Item Field Modal Open] (/docs/images/modal-open.jpg)
+  - [Link Item Field Modal Open](/docs/images/modal-open.jpg)
 
 ## Installation
 
@@ -37,7 +37,7 @@ Add the following to your composer.json file and run /dev/buid?flush=all
 
 ## Guides
 
-  - [Using the field] (/docs/using-the-field)
+  - [Using the field](/docs/using-the-field)
 
 ## Todo
 
