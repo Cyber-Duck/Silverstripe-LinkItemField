@@ -20,34 +20,85 @@ use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\SSViewer;
 
+/**
+ * LinkItemField
+ *
+ * Link Item Form element class
+ *
+ * @package silverstripe-linkitemfield
+ * @license MIT License https://github.com/cyber-duck/silverstripe-linkitemfield/blob/master/LICENSE
+ * @author  <andrewm@cyber-duck.co.uk>
+ **/
 class LinkItemField extends FormField
 {
+    /**
+     * allowed_actions config
+     * 
+     * @since version 4.0.0
+     *
+     * @var array $allowed_actions
+     **/
     private static $allowed_actions = [
         'LinkItemForm',
         'LinkItemFormHTML',
         'doSubmit'
     ];
 
+    /**
+     * Hides the field. The actual form element is a hidden field.
+     * 
+     * @since version 4.0.0
+     *
+     * @return boolean
+     **/
     public function IsHidden()
     {
         return true;
     }
-
+    
+    /**
+     * Returns the relation ID for use in the template.
+     * 
+     * @since version 4.0.0
+     *
+     * @return int
+     **/
     public function getLinkID()
     {
         return (int) $this->Value();
     }
-
+    
+    /**
+     * Returns the LinkItem object Link for use in the template.
+     * 
+     * @since version 4.0.0
+     *
+     * @return string
+     **/
     public function getLinkPath()
     {
         if($this->Value() > 0) return DataObject::get_by_id(LinkItem::class, $this->Value())->Link();
     }
     
+    /**
+     * Returns the LinkItemForm HTML for use in the AJAX request.
+     * 
+     * @since version 4.0.0
+     *
+     * @return string
+     **/
     public function LinkItemFormHTML()
     {
         return $this->LinkItemForm()->forAjaxTemplate();
     }
-
+    
+    /**
+     * Returns the modal Form object.
+     * 
+     * @since version 4.0.0
+     *
+     * @return SilverStripe\Forms\Form
+     **/
     public function LinkItemForm()
     {
         $id = (int) $this->getRequest()->postVar('LinkID');
@@ -100,7 +151,16 @@ class LinkItemField extends FormField
         }
         return $form;
     }
-
+    
+    /**
+     * Returns the modal Form object.
+     * 
+     * @since version 4.0.0
+     *
+     * @var array  $data
+     * @var object $form
+     * @return SilverStripe\Forms\Form
+     **/
     public function doSubmit($data, Form $form)
     {
         $id = (int) $this->getRequest()->postVar('ID');
@@ -116,19 +176,32 @@ class LinkItemField extends FormField
             'url'     => $obj->Link()
         ]);
     }
-
-    public function Field($properties = array())
+    
+    /**
+     * Returns the rendered field object.
+     * 
+     * @since version 4.0.0
+     *
+     * @var array $properties
+     * @return string
+     **/
+    public function Field($properties = [])
     {
         $context = $this;
-
         if(count($properties)) {
             $context = $context->customise($properties);
         }
-        $result = $context->renderWith('forms/LinkItemField');
-
-        return $result;
+        return $context->renderWith('forms/LinkItemField');
     }
     
+    /**
+     * Internal helper method to return or create a LinkItem object
+     * 
+     * @since version 4.0.0
+     *
+     * @var int $id
+     * @return CyberDuck\LinkItemField\Model\LinkItem
+     **/
     private function getLinkObject($id)
     {
         return $id > 0 ? DataObject::get_by_id(LinkItem::class, $id) : LinkItem::create();
