@@ -1,9 +1,9 @@
 # SilverStripe 4 Link Item Field
 
-[![Latest Stable Version](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/v/stable)](https://packagist.org/packages/cyber-duck/silverstripe-seo)
-[![Latest Unstable Version](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/v/unstable)](https://packagist.org/packages/cyber-duck/silverstripe-block-page)
-[![Total Downloads](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/downloads)](https://packagist.org/packages/cyber-duck/silverstripe-seo)
-[![License](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/license)](https://packagist.org/packages/cyber-duck/silverstripe-seo)
+[![Latest Stable Version](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/v/stable)](https://packagist.org/packages/cyber-duck/silverstripe-linkitemfield)
+[![Latest Unstable Version](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/v/unstable)](https://packagist.org/packages/cyber-duck/linkitemfield)
+[![Total Downloads](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/downloads)](https://packagist.org/packages/cyber-duck/silverstripe-linkitemfield)
+[![License](https://poser.pugx.org/cyber-duck/silverstripe-linkitemfield/license)](https://packagist.org/packages/cyber-duck/silverstripe-linkitemfield)
 
 Author: [Andrew Mc Cormack](https://github.com/Andrew-Mc-Cormack)
 
