@@ -95,7 +95,6 @@ class LinkItemField extends FormField
         $form = Form::create($this, 'LinkItemForm', $fields, $actions, $validator);
         $form->setTemplate('forms/LinkItemField_holder');
         $form->addExtraClass('link-item-form');
-        $form->debug();
         if($obj->ID > 0) {
             $form->loadDataFrom($obj);
         }
