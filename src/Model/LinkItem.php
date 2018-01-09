@@ -49,6 +49,11 @@ class LinkItem extends DataObject
         'Image'        => Image::class,
         'InternalLink' => SiteTree::class
     ];
+
+    private static $owns = [
+        'File',
+        'Image'
+    ];
     
     /**
      * summary_fields grid field config
