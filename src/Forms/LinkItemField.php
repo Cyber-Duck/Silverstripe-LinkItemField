@@ -217,6 +217,8 @@ class LinkItemField extends FormField
      **/
     public function validate($validator)
     {
+        if(!$validator->fieldIsRequired($this->getName())) return true;
+        
         if($this->Value() < 1) {
             $validator->validationError(
                 $this->getName(),
