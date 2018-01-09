@@ -206,4 +206,25 @@ class LinkItemField extends FormField
     {
         return $id > 0 ? DataObject::get_by_id(LinkItem::class, $id) : LinkItem::create();
     }
+    
+    /**
+     * Validate the field ID
+     * 
+     * @since version 4.0.0
+     *
+     * @var mixed $validator
+     * @return boolean
+     **/
+    public function validate($validator)
+    {
+        if($this->Value() < 1) {
+            $validator->validationError(
+                $this->getName(),
+                'This field is required. Please add a link.',
+                'validation'
+            );
+            return false;
+        }
+        return true;
+    }
 }
