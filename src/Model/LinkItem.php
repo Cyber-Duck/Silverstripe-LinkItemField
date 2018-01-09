@@ -194,8 +194,7 @@ class LinkItem extends DataObject
     public function getTargets()
     {
         return [
-            '_blank' => 'New tab',
-            '_top'   => 'New window'
+            '_blank' => 'New tab'
         ];
     }
 }
