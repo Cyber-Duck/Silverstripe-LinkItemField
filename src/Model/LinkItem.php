@@ -148,7 +148,7 @@ class LinkItem extends DataObject
                 return 'mailto:'.$this->Email;
             break;
             case 'telephone':
-                return 'tel:+'.$this->Email;
+                return 'tel:+'.$this->Telephone;
             break;
             case 'file':
                 return $this->File()->URL;
