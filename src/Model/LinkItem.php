@@ -139,29 +139,32 @@ class LinkItem extends DataObject
      **/
     public function Link()
     {
+        $link = '';
         switch($this->LinkType) {
             case 'anchor':
-                return '#'.$this->Anchor;
+                $link = '#'.$this->Anchor;
             break;
             case 'internal':
-                return $this->InternalLink()->Link();
+                $link = $this->InternalLink()->Link();
             break;
             case 'external':
-                return $this->ExternalLink;
+                $link = $this->ExternalLink;
             break;
             case 'email':
-                return 'mailto:'.$this->Email;
+                $link = 'mailto:'.$this->Email;
             break;
             case 'telephone':
-                return 'tel:+'.$this->Telephone;
+                $link = 'tel:+'.$this->Telephone;
             break;
             case 'file':
-                return $this->File()->URL;
+                $link = $this->File()->URL;
             break;
             case 'image':
-                return $this->Image()->URL;
+                $link = $this->Image()->URL;
             break;
         }
+        $this->extend('updateLink', $link);
+        return $link;
     }
     
     /**
@@ -173,7 +176,7 @@ class LinkItem extends DataObject
      **/
     public function getMenuItems()
     {
-        return [
+        $items = [
             'anchor'    => 'Anchor link',
             'internal'  => 'Internal Link',
             'external'  => 'External Link',
@@ -182,6 +185,8 @@ class LinkItem extends DataObject
             'file'      => 'File',
             'image'     => 'Image'
         ];
+        $this->extend('updateMenuItems', $items);
+        return $items;
     }
     
     /**
