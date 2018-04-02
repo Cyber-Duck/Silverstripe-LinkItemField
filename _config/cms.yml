@@ -3,8 +3,8 @@ Name: LinkItemField CMS config
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
-    - resources/cyber-duck/silverstripe-linkitemfield/assets/js/linkitemfield.js
+    - vendor/cyber-duck/silverstripe-linkitemfield/assets/js/linkitemfield.js
   extra_requirements_css:
-    - resources/cyber-duck/silverstripe-linkitemfield/assets/css/linkitemfield.css
+    - vendor/cyber-duck/silverstripe-linkitemfield/assets/css/linkitemfield.css
   admin_themes:
    - 'silverstripe-linkitemfield'
