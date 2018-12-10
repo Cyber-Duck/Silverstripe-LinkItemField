@@ -18,7 +18,6 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\View\SSViewer;
 
 /**
  * LinkItemField
@@ -43,6 +42,48 @@ class LinkItemField extends FormField
         'LinkItemFormHTML',
         'doSubmit'
     ];
+    
+    /**
+     * Allowed file categories for File field
+     *
+     * @var array
+     */
+    protected $fileCategories = [
+        'document'
+    ];
+    
+    /**
+     * Allowed image categories for Image field
+     *
+     * @var array
+     */
+    protected $imageCategories = [
+        'image/supported'
+    ];
+
+    /**
+     * Sets the allowed file categories
+     *
+     * @param array $categories
+     * @return void
+     */
+    public function setFileCategories(array $categories)
+    {
+        $this->fileCategories = $categories;
+        return $this;
+    }
+
+    /**
+     * Sets the allowed image categories
+     *
+     * @param array $categories
+     * @return void
+     */
+    public function setImageCategories(array $categories)
+    {
+        $this->imageCategories = $categories;
+        return $this;
+    }
 
     /**
      * Hides the field. The actual form element is a hidden field.
@@ -124,11 +165,11 @@ class LinkItemField extends FormField
                 UploadField::create('File', 'File')
                     ->addExtraClass('link-hidden link-file')
                     ->setFolderName('Uploads')
-                    ->setAllowedFileCategories('document'),
+                    ->setAllowedFileCategories($this->fileCategories),
                 UploadField::create('Image', 'Image')
                     ->addExtraClass('link-hidden link-image')
                     ->setFolderName('Uploads')
-                    ->setAllowedFileCategories('image/supported')
+                    ->setAllowedFileCategories($this->imageCategories)
             )->addExtraClass('link-items'),
             DropdownField::create('Target', 'Open in:')
                 ->setEmptyString('- select type -')
