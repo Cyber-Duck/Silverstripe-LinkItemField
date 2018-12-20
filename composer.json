@@ -7,6 +7,9 @@
         "silverstripe",
         "silverstripe 4",
         "linking",
+        "linking",
+        "has_one",
+        "has_many",
         "custom link field"
     ],
     "license": "MIT",
@@ -21,7 +24,8 @@
         "issues": "http://github.com/cyber-duck/silverstripe-linkitemfield/issues"
     },
     "require": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "unclecheese/display-logic": "^2.0"
     },
     "autoload": {
         "psr-4": {
