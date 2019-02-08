@@ -15,6 +15,7 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
@@ -251,8 +252,6 @@ class LinkItemField extends FormField
      **/
     public function performReadonlyTransformation()
     {
-        $readonlyClassName = static::class . '_Readonly';
-
         $clone = $this->castedCopy(ReadonlyField::class);
         $clone->setValue($this->getLinkLabel());
         $clone->setReadonly(true);
