@@ -245,20 +245,6 @@ class LinkItemField extends FormField
     }
 
     /**
-     * Returns a human friendly label to use in the template.
-     *
-     * @return string
-     **/
-    public function getLinkLabel()
-    {
-        if ($this->Value() > 0) {
-            $link = DataObject::get_by_id(LinkItem::class, $this->Value());
-            return "{$link->Title} ({$link->Link()})";
-        }
-        return '';
-    }
-
-    /**
      * Show the label instead of the ID value when the field is readonly.
      *
      * @return string
