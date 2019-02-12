@@ -2,10 +2,17 @@
 
 namespace CyberDuck\LinkItemField\Model;
 
+use CyberDuck\LinkItemField\Model\LinkItem;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Assets\File;
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\EmailField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
 
@@ -113,50 +120,34 @@ class LinkItem extends DataObject
      **/
     public function getCMSFields()
     {
-        $fields = parent::getCMSFields();
-        $obj = $this->getLinkObject();
-
-        $fields = FieldList::create([
+        return FieldList::create([
             TextField::create('Title'),
             DropdownField::create('LinkType', 'Link Type')
                 ->addExtraClass('link-item-switcher')
                 ->setEmptyString('- select type -')
-                ->setSource($obj->getMenuItems()),
-
-            $linkAnchor = TextField::create('Anchor', 'Anchor Link (without #)'),
-
-            $linkInternal = Wrapper::create(
-                TreeDropdownField::create('InternalLinkID', 'Internal Link', SiteTree::class)
-            ),
-
-            $linkExternal = TextField::create('ExternalLink'),
-
-            $linkEmail = EmailField::create('Email', 'Email (without mailto:)'),
-
-            $linkTelephone = TextField::create('Telephone', 'Telephone (without +)'),
-
-            $linkFile = UploadField::create('File', 'File')
+                ->setSource(singleton(LinkItem::class)->getMenuItems()),
+            TextField::create('Anchor', 'Anchor Link (without #)')
+                ->hideUnless('LinkType')->isEqualTo('anchor')->end(),
+            Wrapper::create(TreeDropdownField::create('InternalLinkID', 'Internal Link', SiteTree::class))
+                ->hideUnless('LinkType')->isEqualTo('internal')->end(),
+            TextField::create('ExternalLink')
+                ->hideUnless('LinkType')->isEqualTo('external')->end(),
+            EmailField::create('Email', 'Email (without mailto:)')
+                ->hideUnless('LinkType')->isEqualTo('email')->end(),
+            TextField::create('Telephone', 'Telephone (without +)')
+                ->hideUnless('LinkType')->isEqualTo('telephone')->end(),
+            UploadField::create('File', 'File')
                 ->setFolderName('Uploads')
-                ->setAllowedFileCategories('document'),
-
-            $linkImage = UploadField::create('Image', 'Image')
+                ->setAllowedFileCategories('document')
+                ->hideUnless('LinkType')->isEqualTo('file')->end(),
+            UploadField::create('Image', 'Image')
                 ->setFolderName('Uploads')
-                ->setAllowedFileCategories('image/supported'),
-
+                ->setAllowedFileCategories('image/supported')
+                ->hideUnless('LinkType')->isEqualTo('image')->end(),
             DropdownField::create('Target', 'Open in:')
                 ->setEmptyString('- select type -')
-                ->setSource($obj->getTargets()),
+                ->setSource(singleton(LinkItem::class)->getTargets()),
         ]);
-
-        $linkAnchor->hideUnless('LinkType')->isEqualTo('anchor');
-        $linkInternal->hideUnless('LinkType')->isEqualTo('internal');
-        $linkExternal->hideUnless('LinkType')->isEqualTo('external');
-        $linkEmail->hideUnless('LinkType')->isEqualTo('email');
-        $linkTelephone->hideUnless('LinkType')->isEqualTo('telephone');
-        $linkFile->hideUnless('LinkType')->isEqualTo('file');
-        $linkImage->hideUnless('LinkType')->isEqualTo('image');
-
-        return $fields;
     }
     
     /**
@@ -168,7 +159,7 @@ class LinkItem extends DataObject
      **/
     public function getCMSValidator()
     {
-        return new RequiredFields([
+        return RequiredFields::create([
             'Title',
             'LinkType'
         ]);
@@ -245,17 +236,5 @@ class LinkItem extends DataObject
         return [
             '_blank' => 'New tab'
         ];
-    }
-
-    /**
-     * Returns or create a new LinkItem object.
-     *
-     * @since version 4.0.0
-     *
-     * @return CyberDuck\LinkItemField\Model\LinkItem
-     */
-    private function getLinkObject()
-    {
-        return $this->ID > 0 ? $this : self::create();
     }
 }
