@@ -30,7 +30,7 @@ Add the following to your composer.json file and run /dev/buid?flush=all
 ```json
 {  
     "require": {  
-        "cyber-duck/silverstripe-linkitemfield": "4.0.*"
+        "cyber-duck/silverstripe-linkitemfield": "4.1.*"
     }
 }
 ```
