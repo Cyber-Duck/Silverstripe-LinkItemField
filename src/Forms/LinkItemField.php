@@ -160,7 +160,7 @@ class LinkItemField extends FormField
                     ->addExtraClass('link-hidden link-external'),
                 EmailField::create('Email', 'Email (without mailto:)')
                     ->addExtraClass('link-hidden link-email'),
-                TextField::create('Telephone', 'Telephone (without +)')
+                TextField::create('Telephone', 'Telephone')
                     ->addExtraClass('link-hidden link-telephone'),
                 UploadField::create('File', 'File')
                     ->addExtraClass('link-hidden link-file')
