@@ -134,7 +134,7 @@ class LinkItem extends DataObject
                 ->hideUnless('LinkType')->isEqualTo('external')->end(),
             EmailField::create('Email', 'Email (without mailto:)')
                 ->hideUnless('LinkType')->isEqualTo('email')->end(),
-            TextField::create('Telephone', 'Telephone (without +)')
+            TextField::create('Telephone', 'Telephone')
                 ->hideUnless('LinkType')->isEqualTo('telephone')->end(),
             UploadField::create('File', 'File')
                 ->setFolderName('Uploads')
@@ -189,7 +189,7 @@ class LinkItem extends DataObject
                 $link = 'mailto:'.$this->Email;
             break;
             case 'telephone':
-                $link = 'tel:+'.$this->Telephone;
+                $link = 'tel:'.$this->Telephone;
             break;
             case 'file':
                 $link = $this->File()->URL;
