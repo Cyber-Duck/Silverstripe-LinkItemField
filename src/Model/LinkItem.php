@@ -119,7 +119,7 @@ class LinkItem extends DataObject
      **/
     public function getCMSFields()
     {
-        return FieldList::create([
+        $fields = FieldList::create([
             TextField::create('Title'),
             DropdownField::create('LinkType', 'Link Type')
                 ->addExtraClass('link-item-switcher')
@@ -147,6 +147,8 @@ class LinkItem extends DataObject
                 ->setEmptyString('- select type -')
                 ->setSource(singleton(LinkItem::class)->getTargets()),
         ]);
+        $this->extend('updateCMSFields', $fields);
+        return $fields;
     }
     
     /**
