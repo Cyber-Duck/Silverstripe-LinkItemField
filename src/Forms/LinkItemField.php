@@ -210,7 +210,7 @@ class LinkItemField extends FormField
         $obj->write();
 
         Controller::curr()->getResponse()->addHeader('Content-Type', 'application/json');
-        return Convert::raw2json([
+        return json_encode([
             'success' => true,
             'name'    => $this->getRequest()->postVar('Relation'),
             'id'      => $obj->ID,
