@@ -95,7 +95,7 @@ class LinkItemField extends FormField
     /**
      * Sets the upload folder name
      *
-     * @param array $categories
+     * @param string $uploadDir
      * @return void
      */
     public function setUploadDir(string $uploadDir)
