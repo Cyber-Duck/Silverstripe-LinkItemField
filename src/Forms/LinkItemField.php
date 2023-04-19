@@ -62,6 +62,13 @@ class LinkItemField extends FormField
     ];
 
     /**
+     * Upload Folder Name
+     *
+     * @var string
+     */
+    protected $uploadDir = 'Uploads';
+
+    /**
      * Sets the allowed file categories
      *
      * @param array $categories
@@ -82,6 +89,18 @@ class LinkItemField extends FormField
     public function setImageCategories(array $categories)
     {
         $this->imageCategories = $categories;
+        return $this;
+    }
+
+    /**
+     * Sets the upload folder name
+     *
+     * @param array $categories
+     * @return void
+     */
+    public function setUploadDir(string $uploadDir)
+    {
+        $this->uploadDir = $uploadDir;
         return $this;
     }
 
@@ -164,11 +183,11 @@ class LinkItemField extends FormField
                     ->addExtraClass('link-hidden link-telephone'),
                 UploadField::create('File', 'File')
                     ->addExtraClass('link-hidden link-file')
-                    ->setFolderName('Uploads')
+                    ->setFolderName($this->uploadDir)
                     ->setAllowedFileCategories($this->fileCategories),
                 UploadField::create('Image', 'Image')
                     ->addExtraClass('link-hidden link-image')
-                    ->setFolderName('Uploads')
+                    ->setFolderName($this->uploadDir)
                     ->setAllowedFileCategories($this->imageCategories)
             )->addExtraClass('link-items'),
             DropdownField::create('Target', 'Open in:')
