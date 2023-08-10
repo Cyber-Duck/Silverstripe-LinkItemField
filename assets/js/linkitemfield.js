@@ -8,6 +8,8 @@
                 var name = parent.find('input.link-item-hidden').attr('name');
                 var path = parent.closest('form').attr('action');
 
+                if (path.slice(-1) !== '/') path += '/';
+
                 jQuery.ajax({
                     type: "POST",
                     url: '/' + path + 'field/' + name + '/LinkItemFormHTML?format=json',
