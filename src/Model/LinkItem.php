@@ -179,25 +179,26 @@ class LinkItem extends DataObject
         switch($this->LinkType) {
             case 'anchor':
                 $link = '#'.$this->Anchor;
-            break;
+                break;
             case 'internal':
                 $link = $this->InternalLink()->Link();
-            break;
+                if($this->Anchor) $link .= '#'.$this->Anchor;
+                break;
             case 'external':
                 $link = $this->ExternalLink;
-            break;
+                break;
             case 'email':
                 $link = 'mailto:'.$this->Email;
-            break;
+                break;
             case 'telephone':
                 $link = 'tel:'.$this->Telephone;
-            break;
+                break;
             case 'file':
                 $link = $this->File()->URL;
-            break;
+                break;
             case 'image':
                 $link = $this->Image()->URL;
-            break;
+                break;
         }
         $this->extend('updateLink', $link);
         return $link;

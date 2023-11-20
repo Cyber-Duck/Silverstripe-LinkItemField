@@ -152,10 +152,10 @@ class LinkItemField extends FormField
                 ->setEmptyString('- select type -')
                 ->setSource($obj->getMenuItems()),
             FieldGroup::create(
-                TextField::create('Anchor', 'Anchor Link (without #)')
-                    ->addExtraClass('link-hidden link-anchor'),
                 TreeDropdownField::create('InternalLinkID', 'Internal Link', SiteTree::class)
                     ->addExtraClass('link-hidden link-internal'),
+                TextField::create('Anchor', 'Anchor Link (without #)')
+                    ->addExtraClass('link-hidden link-anchor link-internal'),
                 TextField::create('ExternalLink')
                     ->addExtraClass('link-hidden link-external'),
                 EmailField::create('Email', 'Email (without mailto:)')
