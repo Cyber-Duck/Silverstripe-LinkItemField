@@ -23,7 +23,7 @@
         "issues": "http://github.com/cyber-duck/silverstripe-linkitemfield/issues"
     },
     "require": {
-        "unclecheese/display-logic": "^3.0"
+        "unclecheese/display-logic": ">=3.0"
     },
     "autoload": {
         "psr-4": {
